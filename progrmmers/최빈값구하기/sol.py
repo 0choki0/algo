@@ -5,16 +5,33 @@
 
 a = [1, 2, 3, 3, 3, 4]
 b = [1, 1, 2, 2]
-c = [1]
+c = [1,2,3]
 
 def solution(array):
 
-    my_mode = 
-    for i in array:
-        
+    my_list = list(set(array)) 
+    my_mode = [] 
+    for num in my_list: 
+        n = 0 
+        for i in array: 
+            if i == num: 
+                n += 1 
+        my_mode.append(n) 
 
+    my_dict = dict(zip(my_list, my_mode)) 
     
+    case2 = sorted(my_mode) 
 
+    if len(my_list) == 1: 
+        answer = array[0]
+    elif case2[-1] == case2[-2]: 
+        answer = -1
+    else:
+        answer = max(my_dict, key=my_dict.get) 
 
-    answer = 0
     return answer
+
+print(solution(a))
+print(solution(b))
+print(solution(c))
+
