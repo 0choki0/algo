@@ -3,14 +3,7 @@
 # 친구들의 번호가 들어있는 정수 배열 numbers와 정수 K가 주어질 때, k번째로 공을 던지는 사람의 번호는 무엇인지 return 하도록 solution 함수를 완성해보세요.
 
 def solution(numbers, k):
-    answer = 0
-    if len(numbers) % 2 == 0:
-        len(numbers) / 2
-
-        
-    else:
-
-    return answer
+    return numbers[2 * (k - 1) % len(numbers)]
 
 
 
@@ -21,7 +14,7 @@ def solution(numbers, k):
 
 a = [1, 2, 3, 4]
 b = [1, 2, 3, 4, 5, 6]
-c = [1, 2, 3]
+c = [1, 2, 3, 4, 5]
 print(solution(a, 2))
 print(solution(b, 5))
 print(solution(c, 3))
