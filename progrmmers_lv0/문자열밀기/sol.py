@@ -2,16 +2,12 @@
 #이것을 문자열을 민다고 정의한다면 문자열 A와 B가 매개변수로 주어질 때, 
 #A를 밀어서 B가 될 수 있다면 밀어야 하는 최소 횟수를 return하고 밀어서 B가 될 수 없으면 -1을 return 하도록 solution 함수를 완성해보세요.
 
-def solution(A, B):
 
-    a = list(A)
-    for i in range(len(A)):
-        a.pop()
-        
-
-
-    answer = 0
-    return answer
+2
+3
+def solution(A, B): 
+    return (B * 2).find(A)
+    
 
 
 # A	B	result

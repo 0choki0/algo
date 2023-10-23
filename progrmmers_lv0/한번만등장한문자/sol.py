@@ -8,6 +8,7 @@ def solution(s):
             a.append(s[i])
     return ''.join(sorted(list(set(s) - set(a))))
 
+
 # s	result
 # "abcabcadc"	"d"
 # "abdc"	"abcd"

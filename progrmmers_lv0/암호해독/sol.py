@@ -5,11 +5,12 @@
 # 문자열 cipher와 정수 code가 매개변수로 주어질 때 해독된 암호 문자열을 return하도록 solution 함수를 완성해주세요.
 
 def solution(cipher, code):
-    for i in range(code * i)
-
     answer = ''
+    for i in range(1, len(cipher)//code+1):
+        answer += cipher[i*code-1]
     return answer
-
+        
+print(solution('dfjardstddetckdaccccdegk', 4))
 
 
 
@@ -21,7 +22,7 @@ def solution(cipher, code):
 
 
 
-
+# 0 3 7 11
 
 
 

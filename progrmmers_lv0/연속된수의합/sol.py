@@ -3,6 +3,18 @@
 
 def solution(num, total):
     answer = []
+    if num % 2 == 1:
+        mid = total // num
+        a1 = mid - (num-1)/2
+        for i in range(num):
+            an = int(a1 + i)
+            answer.append(an)
+    else:
+        mid = total // num
+        a1 = mid + 1 - (num/2)
+        for i in range(num):
+            an = int(a1 + i)
+            answer.append(an)
     
     return answer
 
