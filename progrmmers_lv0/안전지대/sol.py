@@ -5,15 +5,32 @@
 
 
 def solution(board):
-    matrix = [[0] * (len(board)+2)] * (len(board)+2)
+    matrix = [[0 for j in range(len(board)+2)] for i in range(len(board)+2)]
     for i in range(len(board)):
         for j in range(len(board)):
-            if j == 1:
-                matrix[i][]
+            if board[i][j] == 1:
+                matrix[i][j] = 1
+                matrix[i][j+1] = 1
+                matrix[i][j+2] = 1
+            
+                matrix[i+1][j] = 1
+                matrix[i+1][j+1] = 1
+                matrix[i+1][j+2] = 1
 
+                matrix[i+2][j] = 1
+                matrix[i+2][j+1] = 1
+                matrix[i+2][j+2] = 1
+    answer = 0
+    for i in range(1, len(matrix)-1):
+        for j in range(1, len(matrix)-1):
+            if matrix[i][j] == 0:
+                answer += 1
+    return answer 
+
+print(solution([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]))
 # board	result
 # [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]	16
 # [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1, 0], [0, 0, 0, 0, 0]]	13
 # [[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]]	0
 
-print(solution([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]))
+
