@@ -12,12 +12,70 @@
 # ["aya", "yee", "u", "maa"]	1
 # ["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]	2
 
+# def solution(babbling):
+#     answer = 0
+#     for i in babbling:
+#         for j in ['aya','ye','woo','ma']:
+#             if j*2 not in i:
+#                 i=i.replace(j,' ')
+#         if len(i.strip())==0:
+#             answer +=1
+#     return answer
+
 import itertools
 
 def solution(babbling):
-    can = ['aya', 'ye', 'woo', 'ma']
-    can = list(itertools.product(can, repeat = 2))
-    print(can)
-    return 
+    can = []
+    cant = ['ayaaya', 'yeye', 'woowoo', 'mama']
 
-print(solution(["aya", "yee", "u", "maa"]))
+    can1 = ['aya', 'ye', 'woo', 'ma']
+    for i in can1:
+        can.append(i)
+
+    can2 = list(itertools.product(can1, repeat=2))    
+    for i in can2:
+        for j in cant:
+            if j not in ''.join(list(i)):
+                a = 0
+            else:
+                a = 1
+                break
+        if a == 0:
+            can.append(''.join(list(i)))
+
+    can3 = list(itertools.product(can1, repeat=3))    
+    for i in can3:
+        for j in cant:
+            if j not in ''.join(list(i)):
+                a = 0
+            else:
+                a = 1
+                break
+        if a == 0:
+            can.append(''.join(list(i)))
+
+    can4 = list(itertools.product(can1, repeat=4))    
+    for i in can4:
+        for j in cant:
+            if j not in ''.join(list(i)):
+                a = 0
+            else:
+                a = 1
+                break
+        if a == 0:
+            can.append(''.join(list(i)))
+
+
+
+    
+    answer = 0
+    for i in babbling:
+        if i in can:
+            answer += 1
+    return answer
+
+print(solution(["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]))
+    # can4 = list(itertools.product(can1, repeat=4))    
+    # for i in can4:
+    #     if ''.join(list(i)) not in cant:
+    #         can.append(''.join(list(i)))

@@ -26,5 +26,27 @@
 # 4	[4,4,4,4,4]	[4,1,2,3]
 
 def solution(N, stages):
-    answer = []
+    fail = {}
+    for i in range(1, N+1):
+        fail[i] = 0
+    over = 0
+
+    # 스테이지에 머물러 있는 사람
+    stage = [0 for _ in range(N)]
+    for i in stages:
+        if i <= N:
+            stage[i-1] += 1
+        else:
+            over += 1
+
+    # 스테이지를 방문한 사람 (머물러 있는 사람 + 넘어간 사람)
+    visit = [over for _ in range(N)]
+    for i in range(N):
+        visit[i] += stage[i] + sum(stage[i+1:])
+        fail[i+1] = stage[i]/visit[i]
+    
+
+    answer = sorted(fail.items(), key=lambda x: x[1], reverse=True)
+    answer = [i[0] for i in answer]
     return answer
+
