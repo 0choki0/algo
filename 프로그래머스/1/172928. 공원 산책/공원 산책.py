@@ -1,15 +1,19 @@
 def solution(park, routes):
-    # 위치 index
-    x = 0
-    y = 0 
+    x, y = [0, 0] 
     
-    # 시작 위치 찾기
+    # 시작 위치 
     for i in range(len(park)):
-        for j in range(len(park[i])):
-            if park[i][j] == 'S':
-                x = j
-                y = i
-                break
+        if 'S' in park[i]:
+            x = park[i].index('S')
+            y = i
+            break
+            
+    # for i in range(len(park)):
+    #     for j in range(len(park[i])):
+    #         if park[i][j] == 'S':
+    #             x = j
+    #             y = i
+    #             break
     
     # 이동
     for route in routes:
