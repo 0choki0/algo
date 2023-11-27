@@ -1,50 +1,50 @@
+# 각도(방향)
+def angle(route):
+    return route[0]
+
+# 거리
+def distance(route):
+    return int(route[-1])
+
 def solution(park, routes):
-    x, y = [0, 0] 
-    
+
     # 시작 위치 
+    x_0, y_0 = [0, 0]     
     for i in range(len(park)):
         if 'S' in park[i]:
-            x = park[i].index('S')
-            y = i
+            x_0 = park[i].index('S')
+            y_0 = i
             break
-            
-    # for i in range(len(park)):
-    #     for j in range(len(park[i])):
-    #         if park[i][j] == 'S':
-    #             x = j
-    #             y = i
-    #             break
-    
-    # 이동
-    for route in routes:
-        # 위치 초기화
-        xx = x
-        yy = y
-        # 이동 - 장애물이 있거나 공원을 벗어나면 명령 무시
-        for step in range(int(route[2])):
-            # 동쪽 : 현재 위치가 map 가장 오른쪽이면 안됨, 이동할 곳이 장애물이면 안됨
-            if route[0] == 'E' and xx != len(park[0])-1 and park[yy][xx+1] != 'X':
-                xx += 1
-                if step == int(route[2])-1:
-                    x = xx # step만큼 움직였으면 위치 초기화
-            # 서쪽 : 현재 위치가 map 가장 왼쪽이면 안됨, 이동할 곳이 장애물이면 안됨
-            elif route[0] == 'W' and xx != 0 and park[yy][xx-1] != 'X':
-                xx -= 1
-                if step == int(route[2])-1:
-                    x = xx
-            # 남쪽 : 현재 위치가 map 가장 아래쪽이면 안됨, 이동할 곳이 장애물이면 안됨
-            elif route[0] == 'S' and yy != len(park)-1 and park[yy+1][xx] != 'X':
-                yy += 1
-                if step == int(route[2])-1:
-                    y = yy
-            # 북쪽 : 현재 위치가 map 가장 위쪽이면 안됨, 이동할 곳이 장애물이면 안됨
-            elif route[0] == 'N' and yy != 0 and park[yy-1][xx] != 'X':
-                yy -= 1
-                if step == int(route[2])-1:
-                    y = yy
-                    
-    return [y, x]
 
+    c_park = [''.join(i) for i in zip(*park)]
+
+    x, y = x_0, y_0
+    for route in routes:
+        # 동쪽
+        if angle(route) == 'E':
+            if distance(route) >= len(park[0]) - x or 'X' in park[y][x:x+1+distance(route)]:
+                continue
+            else:
+                x += distance(route)
+        # 서쪽
+        elif angle(route) == 'W':
+            if distance(route) > x or 'X' in park[y][x-distance(route):x]:
+                continue
+            else:
+                x -= distance(route)
+        # 남쪽
+        elif angle(route) == 'S':
+            if distance(route) >= len(c_park[0]) - y or 'X' in c_park[x][y:y+1+distance(route)]:
+                continue
+            else:
+                y += distance(route)
+        # 북쪽
+        elif angle(route) == 'N':
+            if distance(route) > y or 'X' in c_park[x][y-distance(route):y]:
+                continue
+            else:
+                y -= distance(route)
+    return [y, x]
 
 # # 각도(방향)
 # def A(route):
