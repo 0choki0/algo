@@ -8,7 +8,7 @@ def solution(number, k):
         while answer[-1] < i and k > 0:
             answer.pop()
             k -= 1
-            if not answer or k <= 0:
+            if not answer:
                 break
         answer.append(i)
         if len(answer) == len(number) - k:
