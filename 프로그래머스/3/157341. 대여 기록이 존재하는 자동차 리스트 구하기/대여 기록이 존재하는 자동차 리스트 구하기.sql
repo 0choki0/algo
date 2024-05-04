@@ -1,0 +1,6 @@
+-- 코드를 입력하세요
+SELECT DISTINCT(A.CAR_ID)
+from CAR_RENTAL_COMPANY_CAR A inner join CAR_RENTAL_COMPANY_RENTAL_HISTORY B
+on A.CAR_ID = B.CAR_ID
+where A.CAR_TYPE like '%세단%' AND MONTH(B.START_DATE) like '10'
+order by 1 desc
