@@ -1,0 +1,5 @@
+select B.AUTHOR_ID, B.AUTHOR_NAME, A.CATEGORY, SUM(A.PRICE*C.SALES) TOTAL_SALES 
+from BOOK A inner join AUTHOR B on A.AUTHOR_ID = B.AUTHOR_ID inner join BOOK_SALES C on A.BOOK_ID = C.BOOK_ID
+where DATE_FORMAT(C.SALES_DATE, '%Y-%m') = '2022-01'
+group by 2, 3
+order by 1, 3 desc
