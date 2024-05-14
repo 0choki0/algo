@@ -16,4 +16,4 @@ with G1 as (
 
 select ID
 from G3
-order by 1
+order by ID
