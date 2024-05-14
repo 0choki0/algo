@@ -1,0 +1,12 @@
+select A.MEMBER_NAME, B.REVIEW_TEXT, DATE_FORMAT(B.REVIEW_DATE, '%Y-%m-%d') REVIEW_DATE
+from MEMBER_PROFILE A inner join REST_REVIEW B on A.MEMBER_ID=B.MEMBER_ID
+where A.MEMBER_NAME like 
+(select MEMBER_NAME
+from(
+select A.MEMBER_NAME, COUNT(*) `COUNT`
+from MEMBER_PROFILE A inner join REST_REVIEW B on A.MEMBER_ID=B.MEMBER_ID
+group by A.MEMBER_ID
+order by 2 desc
+limit 1
+    )BASE)
+order by 3, 2
